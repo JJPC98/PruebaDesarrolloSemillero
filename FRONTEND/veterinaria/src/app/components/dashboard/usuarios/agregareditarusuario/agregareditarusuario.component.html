@@ -1,0 +1,75 @@
+<h2 mat-dialog-title>{{ operacion }} Cliente</h2>
+<mat-dialog-content>
+
+    <form [formGroup]="formUsuario" class="example-form">
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Identificacion</mat-label>
+                    <input type="number" formControlName="idpropietario" matInput placeholder="XXXXXXX" autocomplete="off"
+                        value="">
+                </mat-form-field>
+            </div>
+
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Tipo Documento</mat-label>
+                    <mat-select formControlName="tipoid">
+                      <mat-option *ngFor="let item of tipodocumento" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre Completo</mat-label>
+                    <input type="text" formControlName="nombre" matInput autocomplete="off" placeholder="Nombre X."
+                        value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Ciudad</mat-label>
+                    <input type="text" formControlName="ciudad" matInput autocomplete="off" value="">
+                </mat-form-field>
+            </div>
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Direccion</mat-label>
+                    <input type="text" formControlName="direccion" matInput autocomplete="off" placeholder="Calle #"
+                        value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Telefono</mat-label>
+                    <input type="text" formControlName="telefono" matInput autocomplete="off"
+                        placeholder="+57 ### ### ####" value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column1">
+                <button mat-raised-button (click)="guardaroactualizar()" [disabled]="formUsuario.invalid" color="primary">Guardar</button>
+            </div>
+            <div class="column1">
+                <button mat-raised-button (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+
+    </form>
+
+</mat-dialog-content>

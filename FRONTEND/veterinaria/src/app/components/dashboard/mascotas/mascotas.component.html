@@ -1,0 +1,80 @@
+<div>
+
+  <mat-toolbar>
+    <span>Lista de Pacientes (Mascotas)</span>
+  </mat-toolbar>
+
+  <mat-card>
+
+    <mat-form-field appearance="standard">
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
+    </mat-form-field>
+
+    <button (click)="addEditPaciente()" mat-raised-button color="primary">Agregar</button>
+
+    <table mat-table matTableExporter [dataSource]="dataSource" #exporter="matTableExporter" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="idmascota">
+        <th mat-header-cell *matHeaderCellDef> N°Id Mascota </th>
+        <td mat-cell *matCellDef="let element"> {{element.idmascota}} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="especie">
+        <th mat-header-cell *matHeaderCellDef> Especie </th>
+        <td mat-cell *matCellDef="let element"> {{element.especie}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="raza">
+        <th mat-header-cell *matHeaderCellDef> Raza </th>
+        <td mat-cell *matCellDef="let element"> {{element.raza}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fechanacimiento">
+        <th mat-header-cell *matHeaderCellDef> Fecha Nacimiento </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechanacimiento}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dueño">
+        <th mat-header-cell *matHeaderCellDef> Id Dueño </th>
+        <td mat-cell *matCellDef="let element"> {{element.id_propietario}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecharegistro">
+        <th mat-header-cell *matHeaderCellDef> Fecha Registro </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecharegistro}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef><button mat-stroked-button
+            (click)="exporter.exportTable('xlsx', {fileName: 'Veterinaria XYZ_Pacientes'})">Export XLSX</button></th>
+        <td mat-cell *matCellDef="let element" style="text-align: right;">
+          <a class="pointer" style="color:#1f516f" matTooltip="Editar">
+            <mat-icon (click)="addEditPaciente(element)">edit</mat-icon>
+          </a>
+          <a class="pointer" style="color:#e15639" matTooltip="Eliminar">
+            <mat-icon (click)="eliminarPaciente(element.idmascota)">delete</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+  </mat-card>
+</div>

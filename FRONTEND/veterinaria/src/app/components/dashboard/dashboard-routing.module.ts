@@ -1,0 +1,20 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from '../login/login.component';
+import { DashboardComponent } from './dashboard.component';
+import { MascotasComponent } from './mascotas/mascotas.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+
+
+const routes: Routes = [
+  {path: '', component: DashboardComponent, children: [
+    {path: '', component: MascotasComponent},
+    {path: 'usuarios', component: UsuariosComponent}
+  ]}
+];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class DashboardRoutingModule { }

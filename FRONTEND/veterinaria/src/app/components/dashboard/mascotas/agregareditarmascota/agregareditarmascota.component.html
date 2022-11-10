@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>{{ operacion }} Mascota</h2>
+<mat-dialog-content>
+
+    <form [formGroup]="formMascota" class="example-form">
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Identificacion</mat-label>
+                    <input type="number" formControlName="idmascota" matInput placeholder="XXXXXXX" autocomplete="off"
+                        value="">
+                </mat-form-field>
+            </div>
+
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input type="text" formControlName="nombre" matInput autocomplete="off" placeholder="Nombre X."
+                        value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field appearance="fill">
+                    <mat-label>Especie</mat-label>
+                    <mat-select formControlName="especie">
+                      <mat-option *ngFor="let item of especie" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Raza</mat-label>
+                    <input type="text" formControlName="raza" matInput autocomplete="off" value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Fecha de Nacimiento</mat-label>
+                    <input type="text" formControlName="fechanacimiento" matInput autocomplete="off" placeholder="YYYY-MM-DD"
+                        value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Id Dueño</mat-label>
+                    <input type="text" formControlName="id_propietario" matInput autocomplete="off" value="">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <div class="column">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Fecha de Registro</mat-label>
+                        <input type="text" formControlName="fecharegistro" matInput autocomplete="off" placeholder="YYYY-MM-DD"
+                        value="">
+                      </mat-form-field>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column1">
+                <button mat-raised-button (click)="guardaroactualizar()" [disabled]="formMascota.invalid" color="primary">Guardar</button>
+            </div>
+            <div class="column1">
+                <button mat-raised-button (click)="cancelar()">Cancelar</button>
+            </div>
+        </div>
+
+    </form>
+
+</mat-dialog-content>
