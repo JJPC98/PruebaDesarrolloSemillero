@@ -28,9 +28,10 @@ Back-end:
 5. Debe tener pruebas unitarias con al menos 65% de cobertura (Opcional). ❌
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 Librerias Usadas en Angular:
 
 ng add @angular/material
+
 npm install --save mat-table-exporter
+
 npm install sweetalert2
